@@ -180,4 +180,29 @@ echo "<h3>Resultado 4:</h3>";
 echo "<p> Para los numeros ". implode(", ", $numeros) ." el resultado es:  ". findMaxValueInArray($numeros) ."</p>";
 echo "<br />";
 
+
+
+
+
+
+function cuenta(){
+
+    static $a = 4;
+  
+    $a = $a + 1;
+  
+    echo $a;
+  
+  }
+
+
+  cuenta();
+  cuenta();
+
+  cuenta();
+
+  cuenta();
+
+
+
 ?>
