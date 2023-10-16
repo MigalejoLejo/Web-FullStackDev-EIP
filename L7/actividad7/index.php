@@ -29,7 +29,7 @@ $showLogin = true;
     <main>
 
 
-    <?php if ($isLoggedIn) {
+    <?php if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
         require("pages/products.php"); 
     } else {
         require("pages/login.php"); 

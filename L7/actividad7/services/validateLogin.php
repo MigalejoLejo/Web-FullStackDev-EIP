@@ -66,13 +66,17 @@ function validatePassword(): bool
 };
 
 
-$emailIsValid = validateEmail();
-$passwordIsValid = validatePassword();
-
-if ($emailIsValid && $passwordIsValid) {
+if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
     $isLoggedIn = true;
+} else {
+    $emailIsValid = validateEmail();
+    $passwordIsValid = validatePassword();
+    if ($emailIsValid && $passwordIsValid) {
+        $isLoggedIn = true;
+        $_SESSION["isLoggedIn"] = $isLoggedIn;
+    }
+    
 }
-
 
 
 ?>
