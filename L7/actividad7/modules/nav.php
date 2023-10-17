@@ -8,7 +8,7 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 ?>
 
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark px-4">
     <a class="navbar-brand" href="index.php">LOGO</a>
     <ul class="nav justify-content-end">
 
@@ -18,7 +18,7 @@ error_reporting(E_ALL);
 
         <li class="nav-item">
             <?php if ($isLoggedIn) { 
-                echo " <a class='btn btn-outline-danger text-danger' href='./'>Log Out</a>";
+                echo " <a class='btn btn-outline-danger text-danger' href='pages/logout.php'>Log Out</a>";
             } else {
                 echo " <a class='btn btn-outline-light' href='./'>Login</a>";
             } ?>

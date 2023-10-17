@@ -8,14 +8,14 @@ $emailErrorMessage = "";
 $passwordErrorMessage = "";
 
 
-// validaciones de Login
-
+// Email Validation
 function validateEmail(): bool
 {
     $isValid = false;
     $message = "";
     $email = "";
 
+    // Validation:
     if (isset($_POST["email"]) && !empty($_POST["email"])) {
         $email = trim($_POST["email"]);
 
@@ -25,6 +25,7 @@ function validateEmail(): bool
         }
     }
 
+    // ErrorMesage generation:
     if (!$isValid){
         if (empty($email)) {
             $message = "";
@@ -33,16 +34,20 @@ function validateEmail(): bool
         }
     } 
 
+    // Return Values
     $GLOBALS["emailErrorMessage"] = $message;
     return $isValid;
 };
 
+
+// Password Validation
 function validatePassword(): bool
 {
     $isValid = false;
     $message = "";
     $password = "";
 
+    // Validation
     if (isset($_POST["password"]) && !empty($_POST["password"])) {
         $password = $_POST["password"];
         $isValid = preg_match(
@@ -51,6 +56,7 @@ function validatePassword(): bool
         );
     }
 
+    // Message Generation
     if (empty($password)) {
         $message = "";
     } else {
@@ -61,11 +67,13 @@ function validatePassword(): bool
         }
     }
 
+    // Return Values
     $GLOBALS["passwordErrorMessage"] = $message;
     return $isValid;
 };
 
 
+// Validating Session
 if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
     $isLoggedIn = true;
 } else {
@@ -75,8 +83,6 @@ if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
         $isLoggedIn = true;
         $_SESSION["isLoggedIn"] = $isLoggedIn;
     }
-    
 }
-
 
 ?>

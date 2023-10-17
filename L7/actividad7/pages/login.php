@@ -4,8 +4,9 @@
     MIGUEL A. CORREA AVILA
  *********************************** */
 
- ini_set("display_errors", "1");
- error_reporting(E_ALL);
+ini_set("display_errors", "1");
+error_reporting(E_ALL);
+
 
 ?>
 
@@ -18,14 +19,14 @@
                 <div class="row mb-3">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" name="email" value="miguel@gmail.com" class="form-control" id="email">
+                        <input  name="email"  class="form-control" id="email">
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" name="password" value="Password1!" class="form-control" id="password">
+                        <input type="password" name="password" class="form-control" id="password">
                     </div>
                 </div>
 
@@ -49,5 +50,4 @@
         </form>
 
     </div>
-</div>
 </div>

@@ -7,14 +7,18 @@
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
 
+// Session is started here Since this is the initial page
+session_start();
+
 require("data/menu.php");
-require ("services/validateLogin.php");
+require("services/validateLogin.php");
+require("data/products.php");
 
-
-
-$showLogin = true;
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,16 +32,11 @@ $showLogin = true;
 
     <main>
 
-
-    <?php if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
-        require("pages/products.php"); 
-    } else {
-        require("pages/login.php"); 
-    } ?>
-
-
-       
-
+        <?php if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
+            include("pages/products.php");
+        } else {
+            require("pages/login.php");
+        } ?>
 
     </main>
 
