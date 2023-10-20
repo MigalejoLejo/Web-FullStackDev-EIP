@@ -12,7 +12,6 @@ require ("services/validateLogin.php");
 
 
 
-$showLogin = true;
 
 ?>
 <!DOCTYPE html>
@@ -29,8 +28,11 @@ $showLogin = true;
     <main>
 
 
-    <?php if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
-        require("pages/products.php"); 
+    <?php 
+    if (isset($_SESSION["isLoggedIn"])) {
+        if ($_SESSION["isLoggedIn"]){
+            require("pages/products.php"); 
+        }
     } else {
         require("pages/login.php"); 
     } ?>

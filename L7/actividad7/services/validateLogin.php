@@ -3,7 +3,6 @@
 // Recogida de datos 
 $emailIsValid = false;
 $passwordIsValid = false;
-$isLoggedIn = false;
 $emailErrorMessage = "";
 $passwordErrorMessage = "";
 
@@ -66,17 +65,16 @@ function validatePassword(): bool
 };
 
 
-if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
-    $isLoggedIn = true;
-} else {
+if (!isset($_SESSION["isLoggedIn"]) ){
     $emailIsValid = validateEmail();
     $passwordIsValid = validatePassword();
     if ($emailIsValid && $passwordIsValid) {
-        $isLoggedIn = true;
-        $_SESSION["isLoggedIn"] = $isLoggedIn;
+        $_SESSION["isLoggedIn"] = true;
     }
     
-}
+} 
+
+
 
 
 ?>

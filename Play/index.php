@@ -1,17 +1,18 @@
 
 <?php
 
-for ($i=0; $i < 10; $i++) { 
+if ($_SESSION["isLoggedIn"] != true){
+  $emailIsValid = validateEmail();
+  $passwordIsValid = validatePassword();
+  if ($emailIsValid && $passwordIsValid) {
+      $_SESSION["isLoggedIn"] = true;
+  }
+  
+} else 
 
-    if( $i%2==0 ){
 
-      continue;
+print_r($_SESSION);
 
-    }
-
-    echo $i. " ";
-
-}
 
 
 ?>
