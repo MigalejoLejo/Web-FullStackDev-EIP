@@ -15,6 +15,8 @@ require("services/validateLogin.php");
 require("data/products.php");
 
 
+
+
 ?>
 
 
@@ -32,11 +34,19 @@ require("data/products.php");
 
     <main>
 
-        <?php if (isset($_SESSION["isLoggedIn"]) && !empty($_SESSION["isLoggedIn"])) {
-            include("pages/products.php");
-        } else {
-            require("pages/login.php");
-        } ?>
+
+    <?php 
+    if (isset($_SESSION["isLoggedIn"])) {
+        if ($_SESSION["isLoggedIn"]){
+            require("pages/products.php"); 
+        }
+    } else {
+        require("pages/login.php"); 
+    } ?>
+
+
+       
+
 
     </main>
 
