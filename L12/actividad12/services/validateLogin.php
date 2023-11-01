@@ -1,20 +1,26 @@
 <?php
+/* ***********************************
+    ACTIVIDAD LECCION 12
+    MIGUEL A. CORREA AVILA
+ *********************************** */
 
-// $_SESSION["email"] = "";
-// $_SESSION["password"] = "";
-// $_SESSION["isLoggedIn"] = false;
-
+// Here we save error outputs for the User
+// so that the user knows what is wrong 
+// eg: if the email is in wrong format, or the image is not an image.
 $errorMessages = array(
     "forEmail" => "",
     "forPassword" => "",
     "forImage" => "",
 );
 
-
+// here we save the return values of each validation
 $emailIsValid = validateEmail();
 $passwordIsValid = validatePassword();
 $imageIsValid = validateImage();
 
+
+// Here are the functions that validate Email, Password and Image format
+// ---------------------------------------------------------------------
 function validateEmail(): bool {
     global $errorMessages;
     $errorMessages["forEmail"] = "";
@@ -62,6 +68,7 @@ function validatePassword(){
     return true;
 }
 
+
 function validateImage(): bool {
     global $errorMessages;
 
@@ -71,20 +78,16 @@ function validateImage(): bool {
     }
 
     $image = $_FILES["image"];
-    if (!(($image["type"] == "image/png") || ($image["type"] == "image/jpeg"))) {
+    if (!(($image["type"] == "image/png") || ($image["type"] == "image/jpeg") || ($image["type"] == "image/jpg"))) {
         $errorMessages["forImage"] = "Por favor selecciona una imagen en formato .png o .jpg";
-        return false;
-    }
-
-    $savedSuccesfully = saveImage();
-    if (!$savedSuccesfully) {
-        $errorMessages["forImage"] = "Image could not be saved";
         return false;
     }
 
     return true;
 }
 
+
+// This is a function to save the image
 function saveImage()
 {
     $image = $_FILES["image"];
@@ -111,7 +114,13 @@ function saveImage()
 }
 
 
-
+// FINALLY:
+// If all validations are correct, we set the 
+// session as logged in and we save the image
 if ($emailIsValid && $passwordIsValid && $imageIsValid) {
+    $savedSuccesfully = saveImage();
+    if (!$savedSuccesfully) {
+        $errorMessages["forImage"] = "Image could not be saved";
+    }
     $_SESSION["isLoggedIn"] = true;
-}
+} 

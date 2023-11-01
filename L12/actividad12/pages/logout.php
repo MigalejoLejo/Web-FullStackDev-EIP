@@ -1,6 +1,6 @@
 <?php
 /* ***********************************
-    ACTIVIDAD LECCION 7
+    ACTIVIDAD LECCION 12
     MIGUEL A. CORREA AVILA
  *********************************** */
 

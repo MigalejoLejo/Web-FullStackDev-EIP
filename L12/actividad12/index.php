@@ -1,11 +1,14 @@
 <?php
 /* ***********************************
-    ACTIVIDAD LECCION 7
+    ACTIVIDAD LECCION 12
     MIGUEL A. CORREA AVILA
  *********************************** */
 
+// 👉 PLEASE TAKE A LOOK AT THE README.MD FILE
+
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
+
 
 // Session is started here Since this is the initial page
     session_start();
@@ -16,14 +19,10 @@ error_reporting(E_ALL);
             $_SESSION["isLoggedIn"] = false;   
     } 
 
-
 require("data/menu.php");
 require("services/validateLogin.php");
 require("data/products.php");
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +36,6 @@ require("data/products.php");
     <?php require("modules/nav.php"); ?>
 
     <main>
-
-
         <?php
         if (isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"]) {
             require("pages/products.php");
@@ -46,14 +43,10 @@ require("data/products.php");
             require("pages/login.php");
         }
         ?>
-
-
-
     </main>
 
     <!-- Footer + Scripts -->
     <?php require("modules/footer.php"); ?>
 
 </body>
-
 </html>
