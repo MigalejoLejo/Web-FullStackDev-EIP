@@ -8,7 +8,7 @@ class Controller extends BaseController
 {
 
 
-    public function home () {
+    public function Home () {
         return 'hola mundo';
     }
     //

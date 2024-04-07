@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', [Controller::class, 'home']);
+Route::get('/home', [Controller::class, 'Home']);

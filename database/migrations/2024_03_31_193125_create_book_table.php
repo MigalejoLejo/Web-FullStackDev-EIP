@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prestamos', function (Blueprint $table) {
+        Schema::create('book', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->string('book_id');
-            $table->date('fecha_prestamo');
-            $table->date('fecha_devolucion');
+            $table->string('title');
+            $table->string('author');
+            $table->date('publication_date');
+            $table->string('genre');
+            $table->string('available_for_rent');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prestamos');
+        Schema::dropIfExists('book');
     }
 };
