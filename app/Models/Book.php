@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class Book extends Model {
     use HasFactory;
@@ -37,6 +38,7 @@ class Book extends Model {
 
     public static function updateBookDetails($id,$title, $author, $genre, $publicationDate, $description) {
         $book = static::getBookById($id);
+        echo($book);
 
         if (isset($book)) {
             $book->title =  $title;
@@ -47,8 +49,10 @@ class Book extends Model {
 
             $book->is_available = true;
             $book->save();
+
+            return $book;
         } else {
-            return "Libro con id $id no encontrado.";
+            return null;
         }
     }
 

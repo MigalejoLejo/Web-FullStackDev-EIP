@@ -1,5 +1,3 @@
-<?php ?>
-@csrf
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +61,7 @@
             cursor: pointer;
         }
 
-        .back {
+        .back-button {
             background-color: #a9abac;
             color: #fff;
             border: none;
@@ -83,9 +81,13 @@
 
     <div class="container">
         <h1>Editar Libro</h1>
-        <form action="{{ Route('updateBookDetails', ['id' => $book->id]) }}';"method="PUT">
-            <?php echo csrf_field(); ?>
-            <div class="form-content">
+        <div class="form-content">
+
+            <form action="{{ Route('updateBookDetails') }}" method="POST">
+                @method('PUT')
+                <?php echo csrf_field(); ?>
+                <input type="text" id="id" name="id" value="{{ $book->id }}" readonly hidden>
+
                 <label for="title">Título</label>
                 <input type="text" id="title" name="title" value="{{ $book->title }}">
 
@@ -108,12 +110,24 @@
                 <label for="description">Descripción</label>
                 <textarea class="description" name="description" lang="es_ES" rows="5" required>{{ $book->description }}</textarea>
 
-                <button type="submit">Actualizar</button>
-                <button class="back-button" onclick="window.location='{{ route('home') }}';">Back</button>
+                <input type="hidden" name="_method" value="PUT">
 
 
-            </div>
-        </form>
+                <button type="submit" id="updateButton">Actualizar</button>
+
+
+
+            </form>
+            <button class="back-button" onclick="window.location='{{ route('index') }}'">Ver todos los
+                libros</button>
+
+            <script>
+                document.getElementById('updateButton').addEventListener('click', function() {
+                    // Submit the form
+                    this.closest('form').submit();
+                });
+            </script>
+        </div>
 
     </div>
 

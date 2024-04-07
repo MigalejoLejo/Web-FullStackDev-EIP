@@ -89,7 +89,7 @@
             <span>{{ $book->description}}</span>
         </div>
         <div class="button-container">
-            <button class="back-button" onclick="window.location='{{ route('home') }}'">Ver todos los libros</button>
+            <button class="back-button" onclick="window.location='{{ route('index') }}'">Ver todos los libros</button>
 
         </div>
     </div>

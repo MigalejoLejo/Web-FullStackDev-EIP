@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Spatie\FlareClient\Http\Exceptions\NotFound;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class BookController extends Controller {
 
@@ -40,7 +43,12 @@ class BookController extends Controller {
     }
 
     public function updateBookDetails(Request $data) {
-        $book = Book::updateBook($data->input('id'), $data->input('title'), $data->input('author'), $data->input('genre'), $data->input('publicationDate'), $data->input('description'));
-        return view('bookDetails', compact('book'));
+        $book = Book::updateBookDetails($data->input('id'), $data->input('title'), $data->input('author'), $data->input('genre'), $data->input('publicationDate'), $data->input('description'));
+
+        if (isset($book)) {
+            return view('bookDetails', compact('book'));
+        } else {
+            return redirect()->route('index')->with('error', 'Libro no encontrado');
+        }
     }
 }

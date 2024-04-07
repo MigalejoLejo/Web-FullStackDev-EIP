@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
-Route::get('/', [BookController::class, 'index'])->name('home');
+Route::get('/', [BookController::class, 'index'])->name('index');
 
 
 
@@ -14,5 +14,5 @@ Route::get('/actualizarLibro/{id}', [BookController::class, 'showEditBookDetails
 
 
 Route::post('/crearLibro', [BookController::class, 'addBook'])->name('addBook');
-Route::put('/actualizarLibro/{id}', [BookController::class, 'updateBookDetails'])->name('updateBookDetails');
+Route::put('/actualizarLibro', [BookController::class, 'updateBookDetails'])->name('updateBookDetails');
 

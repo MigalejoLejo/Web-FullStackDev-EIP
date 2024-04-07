@@ -82,6 +82,10 @@
 <body>
     <div class="container">
         <h1>Detalles del Libro</h1>
+         <div class="details">
+            <label>id:</label>
+            <span>{{ $book->id }}</span>
+        </div>
         <div class="details">
             <label>Titulo:</label>
             <span>{{ $book->title }}</span>
@@ -109,7 +113,7 @@
         </div>
         <div class='buttons-container'>
             <div class="button-container">
-                <button class="back-button" onclick="window.location='{{ route('home') }}';">Back</button>
+                <button class="back-button" onclick="window.location='{{ route('index') }}';">Todos los Libros</button>
             </div>
             <div class="button-container">
                 <button class="edit-button" onclick="window.location='{{ route('showEditBookDetails', ['id' => $book->id]) }}';" >Editar</button>

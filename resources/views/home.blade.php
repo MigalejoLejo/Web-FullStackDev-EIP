@@ -87,7 +87,7 @@
 <body>
     <div class='table-container'>
 
-        <h1>All Books</h1>
+        <h1>Todos los Libros</h1>
 
         <div class='tools'>
             <a href="{{ route('showAddBook') }}">Añadir Libro</a>
