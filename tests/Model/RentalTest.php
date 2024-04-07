@@ -52,7 +52,6 @@ class RentalTest extends TestCase {
         $userId = 1;
         $bookId = 2;
         $rental = Rental::saveRental($userId, $bookId);
-        echo ($rental);
 
         // Update return status to returned
         $rental = Rental::updateRentalReturnStatusById($rental->id, true);
@@ -61,9 +60,9 @@ class RentalTest extends TestCase {
         $rental = Rental::updateRentalReturnStatusById($rental->id, false);
 
         $this->assertNull($rental->return_date);
-        echo ($rental);
-
     }
+
+
 
 
 

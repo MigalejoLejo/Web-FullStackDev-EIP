@@ -27,6 +27,7 @@ class Rental extends Model {
     }
 
     public static function saveRental($userId, $bookId) {
+
         $rental = new Rental;
 
         $rental->user_id = $userId;

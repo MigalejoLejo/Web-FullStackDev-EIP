@@ -21,23 +21,32 @@ class Book extends Model {
         return Book::where('title', '=', $title);
     }
 
-    public static function saveBook($title, $author, $genre, $available) {
+    public static function saveBook($title, $author, $genre, $publicationDate, $description) {
         $book = new Book;
 
         $book->title = $title;
         $book->author = $author;
         $book->genre = $genre;
-        $book->available = $available;
+        $book->publication_date = $publicationDate;
+        $book->description = $description;
+        $book->is_available = true;
         $book->save();
 
         return $book;
     }
 
-    public static function updateBook($id,$title, $author, $genre, $available) {
+    public static function updateBookDetails($id,$title, $author, $genre, $publicationDate, $description) {
         $book = static::getBookById($id);
 
         if (isset($book)) {
-            return static::saveBook($title, $author, $genre, $available);
+            $book->title =  $title;
+            $book->author = $author;
+            $book->genre = $genre;
+            $book->publication_date = $publicationDate;
+            $book->description = $description;
+
+            $book->is_available = true;
+            $book->save();
         } else {
             return "Libro con id $id no encontrado.";
         }

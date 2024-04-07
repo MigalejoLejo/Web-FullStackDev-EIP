@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('author');
             $table->date('publication_date');
             $table->string('genre');
-            $table->string('available_for_rent');
+            $table->string('description')->nullable();
+            $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
     }
