@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Book;
 
 class Rental extends Model {
     use HasFactory;
@@ -26,34 +27,38 @@ class Rental extends Model {
         return Rental::where('user_id', '=', $userId);
     }
 
-    public static function saveRental($userId, $bookId) {
+    public static function create($userId, $bookId) {
+        $book = Book::getBookById($bookId);
+        if (isset($book)) {
+            if ($book->is_available) {
+                $book->is_available = false;
+                $book->save();
 
-        $rental = new Rental;
-
-        $rental->user_id = $userId;
-        $rental->book_id = $bookId;
-        $rental->rent_date = Carbon::now();
-
-        $rental->save();
-
-        return $rental;
-    }
-
-    public static function updateRentalReturnStatusById($id, $isReturned) {
-        $rental = static::getRentalById($id);
-
-        if (isset($rental)) {
-            if ($isReturned) {
-                $rental->return_date = Carbon::now();
+                $rental = new Rental;
+                $rental->user_id = $userId;
+                $rental->book_id = $bookId;
+                $rental->rent_date = Carbon::now();
                 $rental->save();
                 return $rental;
             } else {
-                $rental->return_date = null;
-                $rental->save();
-                return $rental;
+                return 'Este libro no está disponible';
             }
         } else {
-            return "Prestamo con id $id no encontrado.";
+            return 'Este libro no existe';
         }
+    }
+
+    public static function endRental($id) {
+        $rental = static::getRentalById($id);
+        $book = Book::getBookById($rental->book_id);
+
+        if (!isset($rental->return_date)) {
+            $rental->return_date = Carbon::now();
+            $book->is_available = true;
+            $book->save();
+            $rental->save();
+        }
+
+        return $rental;
     }
 }

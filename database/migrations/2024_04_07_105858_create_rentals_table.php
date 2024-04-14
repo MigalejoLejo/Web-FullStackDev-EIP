@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void {
         Schema::create('rental', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable(); //temporarily nullable until user management is implemented
             $table->unsignedBigInteger('book_id');
             $table->dateTime('rent_date');
             $table->dateTime('return_date')->nullable();

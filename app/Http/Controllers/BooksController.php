@@ -8,47 +8,49 @@ use Spatie\FlareClient\Http\Exceptions\NotFound;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
-class BookController extends Controller {
+class BooksController extends Controller {
 
     // VIEWS
 
     public function index() {
         $books = Book::all();
-        return view('home', compact('books'));
+        return view('books.all', compact('books'));
     }
 
 
     public function showAddBook(){
-        return view('addBook');
+        return view('books.addNew');
     }
 
 
 
     public function showBookDetails($id) {
         $book = Book::getBookById($id);
-        return view('bookDetails', compact('book'));
+        return view('books.details', compact('book'));
     }
 
     public function showEditBookDetails($id) {
         $book = Book::getBookById($id);
-        return view('editBookDetails', compact('book'));
+        return view('books.editDetails', compact('book'));
     }
 
     //CRUD
 
     public function addBook (Request $data) {
         $book = Book::saveBook($data->input('title'), $data->input('author'), $data->input('genre'), $data->input('publicationDate'), $data->input('description'));
-        return view('newBookDetails', compact('book'));
+        return view('books.createdDetails', compact('book'));
 
     }
 
     public function updateBookDetails(Request $data) {
         $book = Book::updateBookDetails($data->input('id'), $data->input('title'), $data->input('author'), $data->input('genre'), $data->input('publicationDate'), $data->input('description'));
 
-        if (isset($book)) {
-            return view('bookDetails', compact('book'));
+        if (isset($book) && !is_string($book)) {
+            return view('books.details', compact('book'));
         } else {
-            return redirect()->route('index')->with('error', 'Libro no encontrado');
+            $errorMessage = $book;
+            // return redirect()->route('index')->with('error', 'Libro no encontrado');
+            return view('error', compact('errorMessage'));
         }
     }
 }

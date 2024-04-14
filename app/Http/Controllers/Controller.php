@@ -9,7 +9,8 @@ class Controller extends BaseController
 
 
     public function Home () {
-        return 'hola mundo';
+        return view('home');
+
     }
     //
 }

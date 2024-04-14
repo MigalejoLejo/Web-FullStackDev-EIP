@@ -40,17 +40,9 @@
             margin-left: 10px;
         }
 
-        .buttons-container{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: 'center';
-
-        }
-
         .button-container {
             text-align: center;
-            margin: 20px;
+            margin-top: 20px;
         }
 
         .back-button {
@@ -62,30 +54,15 @@
             cursor: pointer;
         }
 
-        .back-button:hover, .edit-button:hover {
-            background-color: #7b7b7b;
+        .back-button:hover {
+            background-color: #0056b3;
         }
-
-
-        .edit-button {
-            background-color: #ffa600;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Detalles del Libro</h1>
-         <div class="details">
-            <label>id:</label>
-            <span>{{ $book->id }}</span>
-        </div>
+        <h1>Libro Creado</h1>
         <div class="details">
             <label>Titulo:</label>
             <span>{{ $book->title }}</span>
@@ -111,13 +88,9 @@
             <label>Descripción:</label>
             <span>{{ $book->description}}</span>
         </div>
-        <div class='buttons-container'>
-            <div class="button-container">
-                <button class="back-button" onclick="window.location='{{ route('index') }}';">Todos los Libros</button>
-            </div>
-            <div class="button-container">
-                <button class="edit-button" onclick="window.location='{{ route('showEditBookDetails', ['id' => $book->id]) }}';" >Editar</button>
-            </div>
+        <div class="button-container">
+            <button class="back-button" onclick="window.location='{{ route('allBooks') }}'">Ver todos los libros</button>
+
         </div>
     </div>
 </body>

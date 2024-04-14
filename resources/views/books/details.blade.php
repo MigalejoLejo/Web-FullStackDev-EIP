@@ -40,9 +40,17 @@
             margin-left: 10px;
         }
 
+        .buttons-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: 'center';
+
+        }
+
         .button-container {
             text-align: center;
-            margin-top: 20px;
+            margin: 20px;
         }
 
         .back-button {
@@ -54,15 +62,40 @@
             cursor: pointer;
         }
 
-        .back-button:hover {
-            background-color: #0056b3;
+        .back-button:hover,
+        .edit-button:hover {
+            background-color: #7b7b7b;
+        }
+
+
+        .edit-button {
+            background-color: #ffa600;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+
+        .rental-button {
+            background-color: #9d00ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Libro Creado</h1>
+        <h1>Detalles del Libro</h1>
+        <div class="details">
+            <label>id:</label>
+            <span>{{ $book->id }}</span>
+        </div>
         <div class="details">
             <label>Titulo:</label>
             <span>{{ $book->title }}</span>
@@ -86,12 +119,22 @@
 
         <div class="details">
             <label>Descripción:</label>
-            <span>{{ $book->description}}</span>
+            <span>{{ $book->description }}</span>
         </div>
-        <div class="button-container">
-            <button class="back-button" onclick="window.location='{{ route('index') }}'">Ver todos los libros</button>
+        <div class='buttons-container'>
+            <div class="button-container">
+                <button class="back-button" onclick="window.location='{{ route('home') }}';">Todos los Libros</button>
+            </div>
+            <div class="button-container">
+                <button class="edit-button"
+                    onclick="window.location='{{ route('showEditBookDetails', ['id' => $book->id]) }}';">Editar</button>
+            </div>
+            <div class="button-container">
+                <button class="rental-button"
+                    onclick="window.location='{{ route('showCreateRental', ['id' => $book->id]) }}';">Prestar</button>
+            </div>
+        </div>
 
-        </div>
     </div>
 </body>
 

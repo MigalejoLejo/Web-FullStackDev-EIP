@@ -118,7 +118,7 @@
 
 
             </form>
-            <button class="back-button" onclick="window.location='{{ route('index') }}'">Ver todos los
+            <button class="back-button" onclick="window.location='{{ route('home') }}'">Ver todos los
                 libros</button>
 
             <script>

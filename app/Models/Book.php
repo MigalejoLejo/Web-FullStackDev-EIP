@@ -38,7 +38,6 @@ class Book extends Model {
 
     public static function updateBookDetails($id,$title, $author, $genre, $publicationDate, $description) {
         $book = static::getBookById($id);
-        echo($book);
 
         if (isset($book)) {
             $book->title =  $title;
@@ -52,7 +51,7 @@ class Book extends Model {
 
             return $book;
         } else {
-            return null;
+            return "Libro con id [$id] no encontrado.";
         }
     }
 
