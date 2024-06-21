@@ -20,5 +20,14 @@ class Users_Tasklists extends Model
         return $relation;
     }
 
+    public static function getRelationByListId($list_id) {
+        $relations = Users_Tasklists::where('list_id', $list_id)->get();
+        return $relations;
+    }
+
+    public static function getRelationByUserId($user_id) {
+        $relations = Users_Tasklists::where('user_id', $user_id)->get();
+        return $relations;
+    }
 
 }

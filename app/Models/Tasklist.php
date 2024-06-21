@@ -63,17 +63,6 @@ class Tasklist extends Model {
         return Tasklist::find($id);
     }
 
-    public static function deleteListById($id) {
-        $list = static::getListById($id);
-
-        if (isset($list)) {
-            $list->delete();
-            return "Lista con id [$id] eliminada.";
-        } else {
-            return "No se encontró la lista con id [$id].";
-        }
-    }
-
     public static function updateList($id, $name, $color) {
         $list = static::getListById($id);
 
@@ -84,6 +73,18 @@ class Tasklist extends Model {
             $list->save();
 
             return $list;
+        } else {
+            return "No se encontró la lista con id [$id].";
+        }
+    }
+
+
+    public static function deleteListById($id) {
+        $list = static::getListById($id);
+
+        if (isset($list)) {
+            $list->delete();
+            return "Lista con id [$id] eliminada.";
         } else {
             return "No se encontró la lista con id [$id].";
         }

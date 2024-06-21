@@ -44,13 +44,20 @@ class Task extends Model {
         return $task;
     }
 
-    public static function updateTask($taskId, $title, $description, $due_date, $reminder_date) {
+    public static function updateTask($taskId, $title = null, $description = null, $due_date = null, $reminder_date = null, $checked = null) {
         $task = Task::find($taskId);
-        $task->title = $title;
-        $task->description = $description;
-        $task->due_date = $due_date;
-        $task->reminder_date = $reminder_date;
+        $task->title = $title ?? $task->title;
+        $task->description = $description ?? $task->description;
+        $task->due_date = $due_date ?? $task->due_date;
+        $task->reminder_date = $reminder_date ?? $task->reminder_date;
+        $task->checked = $checked ?? $task->checked;
         $task->save();
         return $task;
     }
+
+    public static function deleteTask($taskId) {
+        $task = Task::find($taskId);
+        $task->delete();
+    }
+
 }

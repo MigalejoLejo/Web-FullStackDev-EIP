@@ -11,6 +11,7 @@ class Utils_Test extends TestCase {
 
     public function test_print() {
         Utils::log('Hello World', 'test');
+        $this->assertTrue(true);
     }
 
 
