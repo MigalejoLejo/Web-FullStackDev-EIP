@@ -30,6 +30,17 @@ class Task extends Model {
         return $task;
     }
 
+    // TODO: Test this function
+    public static function getTasks($taskId) {
+        return Task::where('id', $taskId)->get();
+    }
+
+    // TODO: Test this function
+    public static function getTasksFromList($listId) {
+        $tasks = Task::where('list_id', $listId)->get();
+        return $tasks;
+    }
+
     public static function check($taskId) {
         $task = Task::find($taskId);
         $task->checked = true;
