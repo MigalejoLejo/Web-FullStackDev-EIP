@@ -11,9 +11,9 @@
 
                  <div class="card-body">
                      @foreach ($userLists as $list)
-                         <button wire:click="getTasks({{ $list }})">
-                             @livewire('list-item-component', ['taskList' => $list])
-                         </button>
+                         <div class="" wire:click="selectList({{ $list }})" wire:key="{{ $list->id }}">
+                             <livewire:list-item-component :taskList="$list"/>
+                         </div>
                      @endforeach
                  </div>
 
@@ -21,15 +21,19 @@
          </div>
          <div class="col col-md-8 ">
              <div class="card" style="min-height: 80vh">
+                 <div class="navbar card-header">
+                     {{-- @isset($selectedList)
+                         {{ $selectedList->name }}
+                         <button type="button" class="btn btn-primary">add task</button>
+                     @else
+                         Selecciona una lista
+
+                         <button type="button" class="btn btn-outline-secondary disabled">add task</button>
+                     @endisset --}}
+
+                 </div>
                  <div class="card-body">
-                     @isset($tasks)
-
-                         @foreach ($tasks as $task)
-                             <p>{{ $task->title }}</p>
-                         @endforeach
-                     @endisset
-
-
+                             <livewire:task-component :listId="$listId" :key="$listId"/>
                  </div>
              </div>
          </div>

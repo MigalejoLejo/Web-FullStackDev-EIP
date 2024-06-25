@@ -22,6 +22,6 @@ class ListItemComponent extends Component {
     }
 
     public function render() {
-        return view('livewire.list-item-component', ['name' => $this->name, 'tasks' => $this->tasks]);
+        return view('livewire.list-item-component', ['name' => $this->name, 'color' => $this->color, 'tasks' => $this->tasks]);
     }
 }

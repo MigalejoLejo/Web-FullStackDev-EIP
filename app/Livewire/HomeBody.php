@@ -11,7 +11,7 @@ use App\Models\Tasklist;
 class HomeBody extends Component {
 
     public $userLists;
-    public $tasks ;
+    public $listId;
 
     public $counter = 0;
 
@@ -19,18 +19,19 @@ class HomeBody extends Component {
         $this->userLists = Tasklist::getUserLists($user->id);
     }
 
-
-    public function getTasks(Tasklist $list) {
+    public function selectList(Tasklist $list) {
+        echo $list;
         $this->counter++;
-        $this->tasks = Task::getTasksFromList($list->id);
-
+        $this->listId = $list->id;
+        echo $this->listId;
     }
+
 
 
 public function increment() {
 }
 
     public function render() {
-        return view('livewire.home-body', ['userLists' => $this->userLists, 'tasks' => $this->tasks]);
+        return view('livewire.home-body', ['userLists' => $this->userLists, 'listId' => $this->listId, 'counter' => $this->counter]);
     }
 }
