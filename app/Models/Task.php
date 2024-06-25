@@ -13,7 +13,7 @@ class Task extends Model {
     public static function addTask(
         $list_id,
         $title,
-        $description,
+        $description = null,
         $due_date = null,
         $reminder_date = null,
         $asigneeId = null

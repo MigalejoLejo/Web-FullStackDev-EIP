@@ -8,13 +8,15 @@ use Livewire\Component;
 class TaskComponent extends Component
 {
     public $tasks;
+    public $list;
 
-    public function mount($listId, Task $task) {
-        $this->tasks = Task::getTasksFromList($listId);
+    public function mount($list, Task $task) {
+        $this->list = $list;
+        $this->tasks = Task::getTasksFromList($list->id ?? 0);
     }
 
     public function render()
     {
-        return view('livewire.task-component', ['tasks' => $this->tasks]);
+        return view('livewire.task-component', ['tasks' => $this->tasks, 'list' => $this->list]);
     }
 }

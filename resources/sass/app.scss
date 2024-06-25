@@ -6,3 +6,31 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+.hover-border {
+    border: 1px solid transparent;
+    /* Use transparent border to avoid layout shift */
+}
+
+/* When hovering, change the border to black */
+.hover-border:hover {
+    border: 1px solid gray;
+}
+
+
+.hover-border .test {
+    color: transparent;
+}
+
+.show-on-hover:hover .test{
+    color: black;
+}
+
+.hover-border .test {
+    color: transparent;
+}
+
+.hover-border:hover .test {
+    color: gray;
+}

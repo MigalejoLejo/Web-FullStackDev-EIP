@@ -13,15 +13,17 @@ class ListItemComponent extends Component {
     public $name;
     public $color;
     public $tasks;
+    public $id;
 
 
     public function mount(TaskList $taskList) {
         $this->name = $taskList->name;
         $this->color = $taskList->color;
         $this->tasks = Task::getTasksFromList($taskList->id);
+        $this->id = $taskList->id;
     }
 
     public function render() {
-        return view('livewire.list-item-component', ['name' => $this->name, 'color' => $this->color, 'tasks' => $this->tasks]);
+        return view('livewire.list-item-component');
     }
 }
