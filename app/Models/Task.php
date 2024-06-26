@@ -41,6 +41,13 @@ class Task extends Model {
         return $tasks;
     }
 
+    public static function toggle($taskId) {
+        $task = Task::find($taskId);
+        $task->checked = !$task->checked;
+        $task->save();
+        return $task;
+    }
+
     public static function check($taskId) {
         $task = Task::find($taskId);
         $task->checked = true;

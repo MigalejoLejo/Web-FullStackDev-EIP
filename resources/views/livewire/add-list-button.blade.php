@@ -6,8 +6,8 @@
 
     <!-- Modal -->
     <div class="modal fade" id="listModal" tabindex="-1" aria-labelledby="listModalLabel" aria-hidden="true">
-        <form>
-              @csrf
+        <form wire:submit.prevent="addList">
+            @csrf
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Header -->
@@ -27,18 +27,16 @@
                         </div>
 
                         <div class="mb-3">
-                                <label for="color" class="form-label">Selecciona un color</label>
-                                <input  wire:model="selectedColor" type="color" class="form-control form-control-color w-25" id="color"
-                                    value="#0c6dfd" title="Selecciona un color">
+                            <label for="color" class="form-label">Selecciona un color</label>
+                            <input wire:model="selectedColor" type="color" class="form-control form-control-color w-25" id="color"
+                                   value="#0c6dfd" title="Selecciona un color">
                         </div>
-
-
                     </div>
 
                     <!-- Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <button type="submit" class="btn btn-primary" >Crear</button>
                     </div>
                 </div>
             </div>

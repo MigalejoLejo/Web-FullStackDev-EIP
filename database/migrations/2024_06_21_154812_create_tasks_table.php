@@ -22,7 +22,9 @@ return new class extends Migration {
 
             $table->foreign('list_id')
                 ->references('id')
-                ->on('tasklists');
+                ->on('tasklists')
+                ->onDelete('cascade');
+
 
             $table->foreign('asignee_id')
                 ->references('id')

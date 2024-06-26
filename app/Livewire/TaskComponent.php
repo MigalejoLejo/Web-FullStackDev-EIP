@@ -10,9 +10,34 @@ class TaskComponent extends Component
     public $tasks;
     public $list;
 
-    public function mount($list, Task $task) {
-        $this->list = $list;
-        $this->tasks = Task::getTasksFromList($list->id ?? 0);
+    protected $listeners = ['listDeleted' => 'handleListDeleted'];
+
+
+    public function mount() {
+        if (session('selectedList')===null) {
+            $this->resetTasks();
+        } else {
+            $this->list = session('selectedList');
+            $this->tasks = Task::getTasksFromList($this->list->id);
+        }
+    }
+
+    public function toggle($id){
+        Task::toggle($id);
+        return redirect()->route('home');
+
+    }
+
+    public function handleListDeleted() {
+        $this->resetTasks();
+        return redirect()->route('home');
+
+
+    }
+
+    public function resetTasks() {
+        $this->tasks = null;
+        $this->list = null;
     }
 
     public function render()

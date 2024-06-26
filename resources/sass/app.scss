@@ -19,18 +19,19 @@
 }
 
 
-.hover-border .test {
+.hover-border .listEditButton {
     color: transparent;
+    border: 0;
+    background-color: transparent;
 }
 
-.show-on-hover:hover .test{
-    color: black;
-}
-
-.hover-border .test {
-    color: transparent;
-}
-
-.hover-border:hover .test {
+.hover-border:hover .listEditButton {
     color: gray;
+}
+
+.listEditButton:hover {
+    border-color: rgb(255, 162, 0);
+    border-width: 1px;
+    border-style: solid;
+    color: rgb(255, 162, 0) !important;
 }
