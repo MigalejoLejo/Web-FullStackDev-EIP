@@ -55,8 +55,10 @@ class Tasklist extends Model {
         return $users;
     }
 
-    public static function shareList ($list_id, $user_id) {
-        Users_Tasklists::createRelation($list_id, $user_id);
+    public static function shareList ($list_id, ...$user_ids) {
+        foreach ($user_ids as $id) {
+            Users_Tasklists::createRelation($list_id, $id);
+        }
     }
 
     public static function getListById($id) {

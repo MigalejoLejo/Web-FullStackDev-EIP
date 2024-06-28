@@ -10,9 +10,8 @@ class AddTaskButton extends Component {
     public $list;
     public $title;
     public $description;
-    public $dueDate;
-    public $reminderDate;
-    public $asigneeId;
+    public $due_date;
+    public $reminder_date;
 
     protected $rules = [
         'title' => 'required|string|max:255'
@@ -28,13 +27,12 @@ class AddTaskButton extends Component {
             $this->list->id,
             $this->title,
             $this->description,
-            $this->dueDate,
-            $this->reminderDate,
-            $this->asigneeId
+            $this->due_date,
+            $this->reminder_date,
         );
 
         // Reset fields after creating the list
-        $this->reset(['title', 'description', 'dueDate', 'reminderDate', 'asigneeId']);
+        $this->reset(['title', 'description', 'due_date', 'reminder_date']);
 
         // Optionally, close the modal after submission
         return redirect()->route('home');

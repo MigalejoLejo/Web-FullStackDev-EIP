@@ -8,7 +8,7 @@ use App\Models\Task;
 use App\Utils\Utils;
 use App\Models\Tasklist;
 
-class ListItemComponent extends Component {
+class ListsViewComponent extends Component {
 
     public $name;
     public $color;
@@ -39,6 +39,6 @@ class ListItemComponent extends Component {
     }
 
     public function render() {
-        return view('livewire.list-item-component');
+        return view('livewire.lists-view-component');
     }
 }

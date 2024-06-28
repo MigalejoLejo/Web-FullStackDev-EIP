@@ -16,7 +16,6 @@ class Task extends Model {
         $description = null,
         $due_date = null,
         $reminder_date = null,
-        $asigneeId = null
     ) {
         $task = new Task();
         $task->list_id = $list_id;
@@ -24,7 +23,6 @@ class Task extends Model {
         $task->description = $description;
         $task->due_date = $due_date;
         $task->reminder_date = $reminder_date;
-        $task->asignee_id = $asigneeId;
         $task->save();
 
         return $task;
@@ -37,7 +35,7 @@ class Task extends Model {
 
     // TODO: Test this function
     public static function getTasksFromList($listId) {
-        $tasks = Task::where('list_id', $listId)->get();
+        $tasks = Task::where('list_id', $listId)->get()->sortBy('checked');
         return $tasks;
     }
 

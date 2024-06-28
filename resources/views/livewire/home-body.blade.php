@@ -15,7 +15,7 @@
                      @isset($userLists)
                          @foreach ($userLists as $list)
                              <div class="" wire:click="selectList({{ $list }})" key="{{ '1' . $list->id }}">
-                                 <livewire:list-item-component :taskList="$list" key="{{ '2' . $list->id }}" />
+                                 <livewire:lists-view-component :taskList="$list" key="{{ '2' . $list->id }}" />
                              </div>
                          @endforeach
                      @endisset
@@ -25,7 +25,7 @@
              </div>
          </div>
          <div class="col col-md-8 ">
-             <livewire:task-component  :key="'3' . ($selectedList->id  ?? 0)" />
+             <livewire:tasks-view-component  :key="'3' . ($selectedList->id  ?? 0)" />
          </div>
      </div>
  </div>

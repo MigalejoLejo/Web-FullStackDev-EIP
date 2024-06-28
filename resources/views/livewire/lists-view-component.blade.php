@@ -4,9 +4,9 @@
             <p class="mb-0 mx-2">{{ $name }}</p>
 
             <!-- Button trigger modal -->
-            <button type="button" class="mx-2 listEditButton rounded" data-bs-toggle="modal"
+            <button type="button" class="mx-2 editButton rounded" data-bs-toggle="modal"
                 data-bs-target="#modal-{{ $id }}">
-                edit
+                <i class="fa-regular fa-edit"></i>
             </button>
         </div>
 
@@ -60,8 +60,7 @@
                                 <div>
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" data-bs-dismiss="modal"
-                                        class="btn btn-primary">Guardar</button>
+                                    <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Guardar</button>
                                 </div>
 
                             </div>

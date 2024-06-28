@@ -19,19 +19,17 @@
 }
 
 
-.hover-border .listEditButton {
+.hover-border .editButton {
     color: transparent;
     border: 0;
     background-color: transparent;
 }
 
-.hover-border:hover .listEditButton {
+.hover-border:hover .editButton {
     color: gray;
 }
 
-.listEditButton:hover {
-    border-color: rgb(255, 162, 0);
-    border-width: 1px;
-    border-style: solid;
-    color: rgb(255, 162, 0) !important;
+.editButton:hover {
+    font-size: 16px;
+    color: orange !important;
 }
