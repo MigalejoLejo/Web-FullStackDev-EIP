@@ -14,9 +14,11 @@ class HomeBody extends Component {
     protected $listeners = ['deleteList' => 'handelDeleteList'];
 
 
+
     public function mount($user) {
         if (session()->has('selectedList')) {
-            $this->selectedList = session('selectedList');
+            $this->selectedList = Tasklist::getListById(session('selectedList')->id);
+            session(['selectedList' => $this->selectedList]);
         }
         $this->userLists = Tasklist::getUserLists($user->id);
     }

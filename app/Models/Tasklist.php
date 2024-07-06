@@ -61,6 +61,18 @@ class Tasklist extends Model {
         }
     }
 
+    public static function removeUserFromList($list_id, $user_id) {
+        $relation = Users_Tasklists::where('list_id', $list_id)
+            ->where('user_id', $user_id)
+            ->first();
+
+        if (isset($relation)) {
+            Users_Tasklists::where('list_id', $list_id)
+                ->where('user_id', $user_id)
+                ->delete();
+        }
+    }
+
     public static function getListById($id) {
         return Tasklist::find($id);
     }

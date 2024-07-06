@@ -5,8 +5,8 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
-        <form wire:submit="addTask">
+    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true" wire:ignore.self>
+        <form wire:submit.prevent="addTask">
             @csrf
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -21,12 +21,18 @@
                         <div class="form-group mb-3">
                             <label for="title" class="form-label">Titulo</label>
                             <input wire:model="title" type="text" class="form-control" id="title">
+                            @error('title')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         {{-- Description --}}
                         <div class="form-group mb-3">
                             <label for="description" class="form-label">Descripción</label>
                             <textarea wire:model="description" class="form-control" id="description" rows="6">{{ $description }}</textarea>
+                            @error('description')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         {{-- Due Date --}}
@@ -50,8 +56,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary"
-                            data-bs-dismiss="modal">Agregar Tarea</button>
+                        <button type="submit" class="btn btn-primary" >Agregar Tarea</button>
                     </div>
                 </div>
             </div>

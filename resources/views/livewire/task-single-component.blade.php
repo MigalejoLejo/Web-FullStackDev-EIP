@@ -69,7 +69,7 @@
 
      <!-- Modal -->
      <div class="modal fade" id="taskModal-{{ $id }}" tabindex="-1" role="dialog"
-         aria-labelledby="taskModal-{{ $id }}Label" aria-hidden="true">
+         aria-labelledby="taskModal-{{ $id }}Label" aria-hidden="true" wire:ignore.self>
 
          <form wire:submit="update">
              @csrf
@@ -87,12 +87,18 @@
                              <label for="title-{{ $id }}" class="form-label">Titulo</label>
                              <input wire:model="title" type="text" class="form-control"
                                  id="title-{{ $id }}">
+                                 @error('title')
+                                     <div class="text-danger">{{ $message }}</div>
+                                 @enderror
                          </div>
 
                          {{-- Description --}}
                          <div class="form-group mb-3">
                              <label for="description-{{ $id }}" class="form-label">Descripción</label>
                              <textarea wire:model="description" class="form-control" id="description-{{ $id }}" rows="6">{{ $description }}</textarea>
+                              @error('error')
+                                     <div class="text-danger">{{ $message }}</div>
+                                 @enderror
                          </div>
 
                          {{-- Due Date --}}

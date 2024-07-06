@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Task;
 use Livewire\Component;
+use Illuminate\Validation\ValidationException;
 
 class AddTaskButton extends Component {
 
@@ -14,7 +15,8 @@ class AddTaskButton extends Component {
     public $reminder_date;
 
     protected $rules = [
-        'title' => 'required|string|max:255'
+        'title' => 'required|string|max:255',
+        'description' => 'string|max:255'
     ];
 
     public function mount($list) {
@@ -22,20 +24,20 @@ class AddTaskButton extends Component {
     }
 
     public function addTask() {
-
-        Task::addTask(
-            $this->list->id,
-            $this->title,
-            $this->description,
-            $this->due_date,
-            $this->reminder_date,
-        );
-
-        // Reset fields after creating the list
-        $this->reset(['title', 'description', 'due_date', 'reminder_date']);
-
-        // Optionally, close the modal after submission
-        return redirect()->route('home');
+        try {
+            $this->validate();
+            Task::addTask(
+                $this->list->id,
+                $this->title,
+                $this->description,
+                $this->due_date,
+                $this->reminder_date,
+            );
+            $this->reset(['title', 'description', 'due_date', 'reminder_date']);
+            return redirect()->route('home');
+        } catch (ValidationException $e) {
+            $this->addError('title', 'Error al crear la tarea: El título es obligatorio y no puede superar los 255 caracteres');
+        }
     }
 
     public function render() {

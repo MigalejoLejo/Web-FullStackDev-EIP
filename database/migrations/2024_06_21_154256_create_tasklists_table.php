@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tasklists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('color')->nullable();
+            $table->string('color')->nullable()->default('#0c6dfd');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('list_id');
             $table->unsignedBigInteger('asignee_id')->nullable();
             $table->string('title');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->dateTime('due_date')->nullable();
             $table->dateTime('reminder_date')->nullable();
             $table->boolean('checked')->default(false);

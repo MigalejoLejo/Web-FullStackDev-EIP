@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Task;
 use App\Utils\Utils;
 use Livewire\Component;
+use Illuminate\Validation\ValidationException;
 
 class TaskSingleComponent extends Component {
 
@@ -17,6 +18,11 @@ class TaskSingleComponent extends Component {
 
     public $short_description;
 
+    protected $rules = [
+        'title' => 'required|string|max:255',
+        'description' => 'string|max:60000'
+    ];
+
 
     public function mount($task) {
         $this->id = $task->id;
@@ -26,7 +32,7 @@ class TaskSingleComponent extends Component {
         $this->reminder_date = $task->reminder_date;
         $this->checked = $task->checked;
 
-        if (strlen($task->description) > 50 ) {
+        if (strlen($task->description) > 50) {
             $this->short_description = substr($task->description, 0, 50) . '...';
         } else {
             $this->short_description = null;
@@ -45,8 +51,18 @@ class TaskSingleComponent extends Component {
     }
 
     public function update() {
-        Task::updateTask($this->id, $this->title, $this->description, $this->due_date, $this->reminder_date, $this->checked);
-        return redirect()->route('home');
+        try {
+            $this->validate();
+            Task::updateTask($this->id, $this->title, $this->description, $this->due_date, $this->reminder_date, $this->checked);
+            return redirect()->route('home');
+        } catch (ValidationException $e) {
+            $validator = $e->validator;
+            if ($validator->errors()->has('title')) {
+                $this->addError('title', "Error al actualizar la tarea: El título no puede estar vacío ni puede tener mas de 255 caracteres");
+            } else {
+              $this->addError('error', "Error al actualizar la tarea: Comprueba los campos de la tarea");
+            }
+        }
     }
 
     public function render() {

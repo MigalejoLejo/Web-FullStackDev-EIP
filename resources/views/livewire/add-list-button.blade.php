@@ -5,7 +5,8 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="listModal" tabindex="-1" aria-labelledby="listModalLabel" aria-hidden="true">
+    <div class="modal fade" id="listModal" tabindex="-1" aria-labelledby="listModalLabel" aria-hidden="true"
+        wire:ignore.self>
         <form wire:submit.prevent="addList">
             @csrf
             <div class="modal-dialog">
@@ -28,15 +29,37 @@
 
                         <div class="mb-3">
                             <label for="color" class="form-label">Selecciona un color</label>
-                            <input wire:model="selectedColor" type="color" class="form-control form-control-color w-25" id="color"
-                                   value="#0c6dfd" title="Selecciona un color">
+                            <input wire:model="selectedColor" type="color"
+                                class="form-control form-control-color w-25" id="color" value="#0c6dfd"
+                                title="Selecciona un color">
                         </div>
+
+                        <div class="mb-3">
+                            <label for="userInput" class="form-label">Agregar usuarios a esta lista</label>
+                            <input wire:model.live="userInput" type="text" class="form-control" id="userInput">
+                            <button wire:click.prevent="addUserToArray" type="button" class="btn btn-secondary mt-3">
+                                Agregar a la lista </button>
+                            <div class="d-flex w-100 flex-wrap align-items-center">
+
+                                @foreach ($listOfUsers as $index => $user)
+                                    <div class="align-items-center m-3 hover-border p-2 rounded">
+                                        <span>{{ $user->name }}</span>
+                                        <button wire:click.prevent="removeUserFromArray({{ $index }})"
+                                            type="button" class="remove-button">
+                                            <i class="fa-regular fa-x"></i>
+                                        </button>
+
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" >Crear</button>
+                        <button type="submit" class="btn btn-primary">Crear</button>
                     </div>
                 </div>
             </div>
