@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: laravel-app
-    container_name: laravel-app
+    container_name: TFM-EIP-Miguel-TasksApp
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
@@ -28,7 +28,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: mysql
+    container_name: TFM-EIP-Miguel-MySQL
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
