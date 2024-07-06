@@ -20,7 +20,7 @@ class TaskSingleComponent extends Component {
 
     protected $rules = [
         'title' => 'required|string|max:255',
-        'description' => 'string|max:60000'
+        'description' => 'nullable|string|max:60000'
     ];
 
 

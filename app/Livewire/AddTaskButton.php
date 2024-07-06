@@ -16,7 +16,7 @@ class AddTaskButton extends Component {
 
     protected $rules = [
         'title' => 'required|string|max:255',
-        'description' => 'string|max:255'
+        'description' => 'nullable|string|max:60000'
     ];
 
     public function mount($list) {
