@@ -26,7 +26,7 @@ class Tasklist_Test extends TestCase {
         $name = 'Lista de prueba';
         $color = '#FFFFFF';
 
-        $list = Tasklist::createUserList($user->id, $name);
+        $list = Tasklist::createUserList($user->id, $name, $color);
 
         // comprobamos que la lista se ha creado correctamente
         $this->assertEquals($name, $list->name);

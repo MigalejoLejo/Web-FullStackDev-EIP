@@ -43,11 +43,9 @@ RUN npm install
 RUN npm run build
 
 # Copy entrypoint script
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+COPY init-project.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/init-project.sh
 
 # Expose port 8000
 EXPOSE 8000
 
-# Use the entrypoint script
-ENTRYPOINT ["docker-entrypoint.sh"]

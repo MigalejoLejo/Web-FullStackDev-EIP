@@ -1,64 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-
+<p align="center" >
+<a href="https://github.com/Migalejo-at-EIP/Tasks-TFM"><img style="background-color:white; height:100; border-radius:10px; padding:10px " src="public/AppLogo.png" alt="Build Status"></a>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```
+Master en Desarrollo Web Fullstack IV - Miguel A. Correa Avila
+```
+# Proyecto: Trabajo Final del Máster
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Este proyecto ha sido creado como Trabajo final del Máster en Desarrollo Web Fullstack IV de la Escuela Internacional de Posgrados (EIP) con el fin de demostrar los conocimientos adquiridos durante el programa.
 
-## Laravel Sponsors
+Este proyecto es una aplicación sencilla de tareas, donde los usuarios se pueden registrar, crear listas de tareas y agregar tareas a estas listas. Adicionalmente, las listas de tareas se pueden compartir con otros usuarios registrados.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Instalación
 
-### Premium Partners
+Dado que este es un proyecto puramente educacional, no se tiene planeado hacer un despliegue a producción.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Requerimientos
+- Tener Docker instalado.
+- Tener acceso a una terminal.
 
-## Contributing
+# Instrucciones
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Primera vez iniciando el proyecto:
+La primera vez que se inicia el proyecto es necesario iniciar los contenedores y ejecutar las migraciones de laravel para crear los datos necesarios en la base de datos
+Para esto: Clonar el repositorio y, desde la raíz del proyecto con la terminal, ejecutar los siguientes comandos:
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```sh
+$ docker-compose up -d
+```
+una vez finalizado ejecutamos un script que he creado para iniciar las migraciones y poblar la base de datos asi como iniciar el servidor
 
-## Security Vulnerabilities
+```sh
+$ docker exec -it TFM-EIP-Miguel-TasksApp init-project.sh
+```
+Finalmente se lanzara la app la cual sera accesible desde:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- http://localhost:8000
 
-## License
+## Iniciar el proyecto despues de la primer vez
+ejecutar el comando:
+```sh
+$ docker-compose up -d
+```
+y lanzar el servidor
+```sh
+docker exec -it TFM-EIP-Miguel-TasksApp php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Tecnologias usadas en este proyecto:
+- Laravel
+- php
+- html
+- css / sass
+- JavaScript
+- Bootstrap
+- Livewire
+- MySQL
+- Node Package Manager (npm)
+- Docker
+
+## Detalles de la App
+Para la authenticacion de usuarios he usado el middleware de Auth que proporciona Laravel con Laravel/ui y Auth.
+
+Con el fin de garantizar una experiencia de uso moderna he optado por usar Livewire y asi general una especie de SPA por lo que no he usado endpoints para general listas o tareas. Los componentes de Livewire se actualizan con los cambios de estado de la App proporcionando asi un comportamiento como en una SPA: 
+
+//
+Livewire is a full-stack framework for Laravel that makes building dynamic interfaces simple, without leaving the comfort of Laravel.
+//
+
+Las listas, tareas, usuarios y relaciones de datos, se almacenan todas en una base de datos de MySQL creadas con las migraciones de Laravel. 
+
+Para asegurar que las funciones basicas de los modelos y la conexion a la BD funciona correctamente he usado test unitarios con laravel. 
+
+para ejecutar los tests: con los contenedores corriendo ejecutar el siguiente comando:
+
+```sh
+$ docker exec -it TFM-EIP-Miguel-TasksApp php artisan test
+```
+
+## Datos de prueba
+
+al lanzar la app sera neceario hacer login con un usuario registrado o registrar un usuario nuevo. 
+
+Para simplificar el testeo de la App la BD ya contiene datos de prueba por lo que se puede hacer login usando los siguientes usuarios:
+
+user: mario@example.com
+password: 12345678
+
+user: peach@example.com
+password: 12345678
+
+user: luigi@example.com
+password: 12345678
+
+## Version Control
+
+Para este proyecto se ha creado un repositorio en Github
+https://github.com/Migalejo-at-EIP/Tasks-TFM
+

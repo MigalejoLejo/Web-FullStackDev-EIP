@@ -1,7 +1,7 @@
 <div>
     @isset($id)
-        <div class="navbar btn d-flex align-items-center w-100 text-start p-10 hover-border" style="height: 50px;">
-            <p class="mb-0 mx-2">{{ $name }}</p>
+        <div class="navbar btn d-flex  w-100 text-start p-10 hover-border" style="min-height: 50px;">
+            <p class="mb-0 mx-2 w-75">{{ $name }}</p>
             <!-- Button trigger modal -->
             <button type="button" class="mx-2 editButton rounded" data-bs-toggle="modal"
                 data-bs-target="#modal-{{ $id }}">

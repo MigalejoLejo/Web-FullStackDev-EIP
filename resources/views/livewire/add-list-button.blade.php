@@ -1,11 +1,11 @@
 <div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listModal">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listModal.{{$id}}">
         +
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="listModal" tabindex="-1" aria-labelledby="listModalLabel" aria-hidden="true"
+    <div class="modal fade" id="listModal.{{$id}}" tabindex="-1" aria-labelledby="listModal.{{$id}}Label" aria-hidden="true"
         wire:ignore.self>
         <form wire:submit.prevent="addList">
             @csrf
@@ -13,7 +13,7 @@
                 <div class="modal-content">
                     <!-- Header -->
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="listModalLabel">Agregar Lista</h1>
+                        <h1 class="modal-title fs-5" id="listModal.{{$id}}Label">Agregar Lista</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 

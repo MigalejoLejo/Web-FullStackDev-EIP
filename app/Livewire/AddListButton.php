@@ -10,11 +10,17 @@ use App\Models\Tasklist;
 
 
 class AddListButton extends Component {
+    public $id;
+
     public $name;
     public $selectedColor = '#0c6dfd';
 
     public $listOfUsers = [];
     public $userInput;
+
+    public function mount($id) {
+        $this->id = $id;
+    }
 
     public function selectColor($color) {
         $this->selectedColor = $color;
