@@ -73,7 +73,7 @@ Throughout this program, the main objectives were:
 
 ## 🧠 About This Repository
 
-This monorepo was created using [`git subtree`](https://git-scm.com/book/en/v2/Git-Tools-Subtree-Merging) to merge multiple individual repositories while **preserving their full commit history**.  
+This monorepo was created using [`git subtree`](https://git-scm.com/docs/merge-strategies) to merge multiple individual repositories while **preserving their full commit history**.  
 It provides a unified view of all the work completed during the Master’s degree while maintaining traceability of each project’s evolution.
 
 ---
