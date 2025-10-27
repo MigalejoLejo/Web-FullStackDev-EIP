@@ -1,0 +1,51 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+
+.hover-border {
+    border: 1px solid transparent;
+    /* Use transparent border to avoid layout shift */
+}
+
+/* When hovering, change the border to black */
+.hover-border:hover {
+    border: 1px solid gray;
+}
+
+
+.hover-border .editButton {
+    color: transparent;
+    border: 0;
+    background-color: transparent;
+}
+
+.hover-border:hover .editButton {
+    color: gray;
+}
+
+.editButton:hover {
+    font-size: 16px;
+    color: orange !important;
+}
+
+
+
+.remove-button {
+    margin: 0;
+    padding: 0;
+    color: #d0d0d0;
+    border-color: transparent;
+    background-color: transparent;
+    font-size: 10px;
+
+}
+
+.remove-button:hover {
+    color: red;
+}
