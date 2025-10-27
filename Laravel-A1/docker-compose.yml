@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  mysql:
+    container_name: MySQL-EIP
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: eip
+    ports:
+      - "3306:3306"
